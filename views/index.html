@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Metric/Imperial Converter</title>
+  <meta name="description" content="An example of the Free Code Camp Metric/Imperial Converter Project">
+  <link id="favicon" rel="icon" href="https://cdn.freecodecamp.org/universal/favicons/favicon-32x32.png" type="image/x-icon">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./public/style.css">
+</head>
+<body>
+  <header>
+    <h1 style="text-align: center; margin-top: 9%;">Metric/Imperial Converter</h1>
+  </header>
+  <hr style='margin: 70px; margin-top: 10px; margin-bottom: 30px; border: double white'>
+  <section>
+    <div class="left">
+      <div class="box">
+        <h2 style="text-align: center; margin-left: 13%;">Units</h2>
+        <li>gal to L</li>
+        <li>L to gal</li>
+        <li>lbs to kg</li>
+        <li>kg to lbs</li>
+        <li>mi to km</li>
+        <li>km to mi</li>
+      </div>
+    </div>
+    <div id='testui' class="right">
+      <h2>Conversion</h2>
+      <form id="convertForm" class="border">
+        <input type="text" id="convertField" name="input" placeholder="3.1mi" style="width: 200px">
+        <input id="convert" type="submit" value='Convert!'>
+      </form>
+      <p id='result' style="margin-right: 13%; margin-top: 3%; text-align: center;"></p>
+      <code id='jsonResult' style="margin-right: 13%;"></code>
+    </div>
+  </section>
+  <!-- Your web-app is https, so your scripts need to be too -->
+  <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+          integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+          crossorigin="anonymous"></script>
+  <script>
+    $(function() {
+      $('#convertForm').submit(function(event) {
+        event.preventDefault();
+        $.ajax({
+          url: '/api/convert',
+          type: 'get',
+          data: $('#convertForm').serialize(),
+          success: function(data) {
+            $('#result').text(data.string || data);
+            $('#jsonResult').text(JSON.stringify(data));
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
