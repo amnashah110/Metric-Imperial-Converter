@@ -1,3 +1,6 @@
 # Metric-Imperial Converter
 
-This is the boilerplate for the Metric-Imperial Converter project. Instructions for building your project can be found at https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/metric-imperial-converter
+A fullstack unit converter that converts from Gallons to Liters, Kilometers to Miles, and Pounds to Kilograms and vice versa.
+
+![Project Screenshot](public/converter.png)
+
